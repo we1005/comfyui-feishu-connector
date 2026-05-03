@@ -34,6 +34,12 @@
 
 ---
 
+
+
+## 界面截图
+
+<img src="README.assets/img_v3_0211b_3b50a4d8-48b3-409e-86b2-3d13df04bcdg.jpg" alt="img_v3_0211b_3b50a4d8-48b3-409e-86b2-3d13df04bcdg" style="zoom: 33%;" />
+
 ## 功能
 
 - ✅ **飞书长连接**:无需公网回调地址,Bot 通过 WebSocket 主动连飞书。
