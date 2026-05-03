@@ -1,0 +1,24 @@
+workflows:
+  - id: txt2img
+    name: 文生图
+    description: 基础文本生成图片 workflow
+    file: txt2img.api.json
+    positive_prompt:
+      node_id: "6"
+      input: text
+    negative_prompt:
+      node_id: "7"
+      input: text
+      default: low quality, blurry
+    seed:
+      node_id: "3"
+      input: seed
+      randomize: true
+    width:
+      node_id: "5"
+      input: width
+      default: 1024
+    height:
+      node_id: "5"
+      input: height
+      default: 1024

@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local secrets and runtime data
+.env
+data/
+data_*test/
+
+# User-specific workflow assets (keep workflows/index.example.yaml as a template)
+workflows/index.yaml
+workflows/*.api.json
