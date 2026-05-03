@@ -28,7 +28,6 @@
 - [机器人命令](#机器人命令)
 - [中文 prompt 自动翻译](#中文-prompt-自动翻译)
 - [添加新 workflow](#添加新-workflow)
-- [企业网络 / 自签 CA 证书](#企业网络--自签-ca-证书)
 - [项目结构](#项目结构)
 - [开发与测试](#开发与测试)
 - [常见问题](#常见问题)
@@ -246,32 +245,6 @@ INFO comfyui_feishu.bot_service: translated task 5c285e... ->
    ```
 
 `workflow_registry` 会在启动时校验:JSON 里若没有这些 `node_id` / `input`,会立即抛错——配错不会等到第一条用户消息才暴露。
-
----
-
-## 企业网络 / 自签 CA 证书
-
-公司网络常对 TLS 做中间人(MITM)拦截,Python 的 `certifi` 默认不信任 OS 信任库。本项目在 `main.py` 启动时调用了:
-
-```python
-import truststore
-truststore.inject_into_ssl()
-```
-
-让 `requests` / `httpx` / `websockets` 共用 OS 信任链(macOS Keychain / Windows Cert Store / Linux 系统 bundle)。**只要你的浏览器能访问飞书,Bot 也能。**
-
-如果还报 `CERTIFICATE_VERIFY_FAILED`,可以手动构建一个合并 bundle:
-
-```bash
-./scripts/build_ca_bundle.sh   # 输出 data/ca-bundle.pem
-```
-
-然后在 `run.sh` 启动前 export(本仓库 `run.sh` 已自动处理):
-
-```bash
-export SSL_CERT_FILE=$PWD/data/ca-bundle.pem
-export REQUESTS_CA_BUNDLE=$PWD/data/ca-bundle.pem
-```
 
 ---
 
